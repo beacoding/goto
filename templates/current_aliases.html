@@ -1,0 +1,19 @@
+<!doctype html>
+<html>
+    <body>
+	<table border = 0>
+	    <thead>
+		<td>Alias</td>
+		<td>Url</td>
+	    </thead>
+
+		{% for row in rows %}
+		<tr>
+		    <td>{{row["alias"]}}</td>
+		    <td>{{row["url"]}}</td>
+		</tr>
+		{% endfor %}
+	    </table>
+	    <a href = "/"> Add new </a>
+	</body>
+    </html>

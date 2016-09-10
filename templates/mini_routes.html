@@ -3,10 +3,25 @@
 	<form action = "/add_new_route" method = "POST">
 	    <h4> Add a New Alias for your Route </h4>
 	    Alias</br>
-	     <input type = "text" name = "alias" /></br>
-	     Url</br>
-	     <input type = "text" name = "url" /> </br>
-	     <input type = "submit" value = "submit" /><br>
-	 </form>
-     </body>
- </html>
+	    <input type = "text" name = "alias" /></br>
+	    Url</br>
+	    <input type = "text" name = "url" /> </br>
+	    <input type = "submit" value = "submit" /><br>
+	</form>
+	<table border = 1>
+	    <thead>
+		<td>Alias</td>
+		<td>Url</td>
+		<td>Remove</td>
+		</thead>
+
+		{% for row in rows %}
+		<tr>
+		    <td>{{row["alias"]}}</td>
+		    <td>{{row["url"]}}</td>
+		    <td> <a href = "/delete/{{row["alias"]}}"> Remove </a>
+		</tr>
+		{% endfor %}
+	    </table>
+	</body>
+    </html>
