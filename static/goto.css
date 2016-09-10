@@ -16,6 +16,32 @@
     margin-top: 30px;
 }
 
+h2 {
+    display: inline;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 5em;
+}
+
+body {
+    font-family: 'PT Sans', sans-serif;
+    font-size: 1.5em;
+}
+
+td {
+    font-size: 0.90em;
+}
+
+h3 {
+    display:inline;
+    font-family: 'Bungee Shade', cursive;
+    font-size: 4em;
+}
+
+
+h6 {
+    display: inline;
+}
+
 .inputs {
     margin-top: 5px;
 }
