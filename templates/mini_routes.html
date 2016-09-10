@@ -1,27 +1,55 @@
+<!doctype html>
 <html>
+    <head>
+	<meta charset = "utf-8">
+	<title> GoTo </title>
+	<meta name = "description" content = "Url Shortcuts">
+	<!-- stylesheets -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<link rel = "stylesheet" type = "text/css" href = "/static/goto.css">
+
+	<!-- javascripts -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-2.2.0.min.js"></script> 
+    </head>
+
     <body>
 	<form action = "/add_new_route" method = "POST">
-	    <h4> Add a New Alias for your Route </h4>
-	    Alias</br>
-	    <input type = "text" name = "alias" /></br>
-	    Url</br>
-	    <input type = "text" name = "url" /> </br>
-	    <input type = "submit" value = "submit" /><br>
-	</form>
-	<table border = 1>
-	    <thead>
-		<td>Alias</td>
-		<td>Url</td>
-		<td>Remove</td>
-		</thead>
+	    <div class = "row">
+		<div class = "col-md-12 title">
+		    <h4> GoTo Especially made for Chris Zhu </h4>
+		</div>
+	    </div>
 
-		{% for row in rows %}
-		<tr>
-		    <td>{{row["alias"]}}</td>
-		    <td>{{row["url"]}}</td>
-		    <td> <a href = "/delete/{{row["alias"]}}"> Remove </a>
-		</tr>
-		{% endfor %}
+	    <div class = "row">
+		<div class = "col-md-12 alias_form">
+		    Alias</br>
+		    <input type = "text" name = "alias" /></br>
+		    Url</br>
+		    <input type = "text" name = "url" /> </br>
+		    <button type = "submit" class = "btn btn-default" />Submit<br>
+		</div>
+	    </div>
+	</form>
+
+	<div class = "container">
+	    <h4> Alias Table </h4>
+	    <table class = "table table-hover">
+		<thead>
+		    <td>Alias</td>
+		    <td>Url</td>
+		    <td>&nbsp</td>
+		</thead>
+		<tbody>
+		    {% for row in rows %}
+		    <tr>
+			<td>{{row["alias"]}}</td>
+			<td>{{row["url"]}}</td>
+			<td> <a href = "/delete/{{row["alias"]}}"> Remove </a></td>
+		    </tr>
+		    {% endfor %}
+		</tbody>
 	    </table>
 	</body>
     </html>
