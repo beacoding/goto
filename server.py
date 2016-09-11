@@ -5,7 +5,9 @@ app = Flask(__name__)
 
 conn = sqlite3.connect('example.db')
 c = conn.cursor()
-c.execute("CREATE TABLE IF NOT EXISTS short_routes (id INTEGER PRIMARY KEY AUTOINCREMENT, alias text, url text)")
+#c.execute("CREATE TABLE IF NOT EXISTS short_routes (id INTEGER PRIMARY KEY AUTOINCREMENT, alias text, url text)")
+#c.execute("DROP TABLE short_routes")
+c.execute("CREATE TABLE IF NOT EXISTS short_routes (id INTEGER PRIMARY KEY AUTOINCREMENT, alias text UNIQUE, url text)")
 conn.commit()
 
 @app.route('/')
@@ -26,7 +28,8 @@ def add_new_route():
     c = conn.cursor()
     alias = request.form['alias']
     url = request.form['url']
-    c.execute("INSERT INTO short_routes (alias, url) VALUES (?,?)",(alias, url))
+    c.execute("INSERT OR REPLACE INTO short_routes (alias) VALUES (?)", (alias,))
+    c.execute("UPDATE short_routes SET url=? WHERE alias=?", (url, alias))
     conn.commit()
     return redirect('/', code = 302)
 
