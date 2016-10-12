@@ -1,2 +1,2 @@
 #!/bin/bash
-python /usr/local/Cellar/goto/1.0.7/server.py &
+python /usr/local/Cellar/goto/1.0.8/server.py &
