@@ -1,6 +1,6 @@
 import os
 import sqlite3
-from flask import Flask,redirect, render_template, request
+from flask import Flask,redirect, render_template, request, abort
 app = Flask(__name__)
 
 conn = sqlite3.connect('example.db')
@@ -12,7 +12,6 @@ conn.commit()
 
 @app.route('/')
 def index():
-
     con = sqlite3.connect("example.db")
     con.row_factory = sqlite3.Row
 
@@ -22,7 +21,7 @@ def index():
     rows = cur.fetchall();
     return render_template('mini_routes.html', rows = rows)
 
-@app.route('/add_new_route', methods=['GET', 'POST'])
+@app.route('/add_new_route', methods=['POST'])
 def add_new_route():
     conn = sqlite3.connect('example.db')
     c = conn.cursor()
@@ -36,10 +35,15 @@ def add_new_route():
 
 @app.route('/<alias>')
 def redir(alias):
-    conn = sqlite3.connect('example.db')
-    c = conn.cursor()
-    redirect_url = c.execute("SELECT url FROM short_routes WHERE alias=?", (alias,)).fetchone()
-    return redirect('%s' % redirect_url, code = 302)
+    if alias:
+    	conn = sqlite3.connect('example.db')
+    	c = conn.cursor()
+    	redirect_url = c.execute("SELECT url FROM short_routes WHERE alias=?", (alias,)).fetchone()
+	print(redirect_url);
+	if redirect_url:
+    		return redirect('%s' % redirect_url, code = 302)
+	else:
+	    abort(404)
 
 @app.route('/delete/<entry>')
 def delete(entry):
@@ -48,6 +52,14 @@ def delete(entry):
     cur.execute("DELETE FROM short_routes WHERE alias = ?", (entry,))
     con.commit()
     return redirect('/', code = 302)
+
+@app.route('/404')
+def page_not_found():
+    return render_template('404.html')
+
+@app.errorhandler(404)
+def page_not_found(e):
+	return render_template('404.html'), 404
 
 if __name__ == '__main__':
     app.run(debug=True, host='127.0.0.1', port = 80)
