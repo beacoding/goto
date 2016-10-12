@@ -3,7 +3,7 @@ import os
 
 setup(
     name         = 'goto',
-    version      = '1.0.5',
+    version      = '1.0.8',
     author       = 'Bianca Subion',
     author_email = 'biancasubion@gmail.com',
     license      = 'GPL3',
