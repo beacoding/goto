@@ -39,7 +39,6 @@ def redir(alias):
     	conn = sqlite3.connect('example.db')
     	c = conn.cursor()
     	redirect_url = c.execute("SELECT url FROM short_routes WHERE alias=?", (alias,)).fetchone()
-	print(redirect_url);
 	if redirect_url:
     		return redirect('%s' % redirect_url, code = 302)
 	else:

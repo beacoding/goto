@@ -4,4 +4,4 @@
 2. brew install goto
 3. sudo me < name_root >
 
-![Alt Text](https://j.gifs.com/Y6MmnW.gif)
+![Alt Text](http://g.recordit.co/QH3crhGrKP.gif)
