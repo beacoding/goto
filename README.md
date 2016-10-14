@@ -6,6 +6,12 @@ GoTo is a custom URL shortener that encourages elimination of downtime in thinki
 ##Motivation
 To be able to quickly navigate to my favorite songs, go to certain github pages and documentation, message the people I actively talk to the most, go to the homepage of my current course and section, etc.
 
+
+##Installation
+1. brew tap biancasubion/tap
+2. brew install goto
+3. sudo me < name_root >
+
 ##Example
 I install goto, and name the root page 'go'.
 
@@ -15,9 +21,9 @@ The url I want to shorten contains a pdf version of The Adventures Of Sherlock H
 
 Now I will be able to type in go/sh on my web browser and it will direct me to 'http://people.maths.ox.ac.uk/moulton/documents/The_Adventures_of_Sherlock_Holmes.pdf'.
 
-##Installation
-1. brew tap biancasubion/tap
-2. brew install goto
-3. sudo me < name_root >
+##Built With
+* [Flask](http://flask.pocoo.org) - The web framework used
+* [SQLite3] (https://www.sqlite.org) - The database used
+* [Homebrew] (http://brew.sh) - The package manager used to package project
 
 ![Alt Text](http://g.recordit.co/QH3crhGrKP.gif)
