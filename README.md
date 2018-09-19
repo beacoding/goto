@@ -10,7 +10,6 @@ To be able to quickly navigate to my favorite songs, go to certain github pages 
 ##Installation
 1. brew tap biancasubion/tap
 2. brew install biancasubion/tap/goto
-3. brew install goto
 4. sudo goto < name_root >
 
 ##Example
